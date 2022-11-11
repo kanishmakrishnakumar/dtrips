@@ -34,7 +34,7 @@ export default {
     
     const uiConfig = {
       signInFlow: 'popup',
-      signinSuccessUrl: 'http://localhost:8080/',
+      signinSuccessUrl: 'https://dtrips.vercel.app/',
       signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
@@ -63,13 +63,13 @@ export default {
 
           if (authResult.credential.providerId == "google.com" ){
             console.log(authResult.user.displayName)
-            // const loginUrl = `http://192.168.1.46:8991/api/google/signup`
+            // const loginUrl = `https://dtrips.herokuapp.com/api/google/signup`
             // let payload = {
             //    "name" : authResult.user.displayName,
             //    "email": email.value,
             //    "imageurl": image.value,
             // }
-            axios.post( `http://192.168.1.46:8991/api/google/signup`, {
+            axios.post( `https://dtrips.herokuapp.com/api/google/signup`, {
                "name" : authResult.user.displayName,
                "username": email.value,
                "imageurl": image.value,
@@ -99,7 +99,7 @@ export default {
             //    "id": useridfb.value1,
             //    "imageurl": imagefb.value1,
             // }
-            axios.post(`http://192.168.1.46:8991/api/facebook/facebook-signup`, 
+            axios.post(`https://dtrips.herokuapp.com/api/facebook/facebook-signup`, 
             {
                "username" :  authResult.user.displayName,
                "id": useridfb.value,
