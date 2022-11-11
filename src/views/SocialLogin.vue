@@ -117,7 +117,7 @@ export default {
        
           // isSignedIn.value = true;
 
-          return false;
+          return true;
         },
 
         // uiShown: function() {
