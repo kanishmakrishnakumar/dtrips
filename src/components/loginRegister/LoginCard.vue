@@ -161,7 +161,7 @@ data(){
   },
   methods:{
       login(){
-          axios.post("http://192.168.1.46:8991/api/auth/signin",{
+          axios.post("https://dtrips.herokuapp.com/api/auth/signin",{
             // body:{ 
               "username":this.email,
               "password":this.password
