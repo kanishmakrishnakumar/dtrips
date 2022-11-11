@@ -183,7 +183,7 @@ data(){
                 console.log(response.status);
                 console.log(response.data);
                 console.log('Login Successfully')
-                // this.$router.push("/home");
+                this.$router.push("/home");
                 console.log('ok')
               }
           }).catch((error)=>{
