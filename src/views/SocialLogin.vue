@@ -9,8 +9,6 @@
   </div>
 </template>
 
-<!-- <script src="/__/firebase/init.js"></script>
-<script src="https://cdn.firebase.com/libs/firebaseui/3.0.0/firebaseui.js"></script> -->
 <script>
 import axios from 'axios';
 import { ref } from 'vue';
@@ -30,16 +28,14 @@ export default {
     const email = ref(null);
     const image = ref(null);
     const useridfb = ref(null);
-    const isSignedIn = ref(false);
+    // const isSignedIn = ref(false);
     
     const uiConfig = {
       signInFlow: 'popup',
-      signinSuccessUrl: 'https://dtrips.vercel.app/',
+      signinSuccessUrl: 'http://localhost:8080/',
       signInOptions: [
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-      // firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-      // firebase.auth.GithubAuthProvider.PROVIDER_ID
       ],
       callbacks: {
 
@@ -49,30 +45,26 @@ export default {
           email.value = authResult.user.email;
           image.value = authResult.user.photoURL;
           useridfb.value = authResult.additionalUserInfo.profile.id;
-          // console.log(authResult.user.displayName);
           // console.log(authResult.user.email);
-          // console.log(authResult.user.photoURL)
           console.log(authResult);
-          console.log(authResult.user.email);
           console.log(email.value);
-          console.log(authResult.credential.providerId);
-
-          // console.log('iddddddddddddddddddssssssssssssssssssssssssssssss');
-          
+          console.log(useridfb.value)
           console.log(authResult.credential.providerId);
 
           if (authResult.credential.providerId == "google.com" ){
             console.log(authResult.user.displayName)
-            // const loginUrl = `https://dtrips.herokuapp.com/api/google/signup`
+            // const loginUrl = `http://192.168.1.46:8991/api/google/signup`
             // let payload = {
             //    "name" : authResult.user.displayName,
             //    "email": email.value,
             //    "imageurl": image.value,
             // }
-            axios.post( `https://dtrips.herokuapp.com/api/google/signup`, {
+            axios.post( `https://dtrips.herokuapp.com/api/auth/google-signin`, {
                "name" : authResult.user.displayName,
                "username": email.value,
+               "email" : email.value,
                "imageurl": image.value,
+               "password" : email.value,
             })
             .then((response)=>{
                 console.log(response.status);
@@ -99,11 +91,14 @@ export default {
             //    "id": useridfb.value1,
             //    "imageurl": imagefb.value1,
             // }
-            axios.post(`https://dtrips.herokuapp.com/api/facebook/facebook-signup`, 
+            axios.post(`https://dtrips.herokuapp.com/api/auth/fb-signin`, 
             {
-               "username" :  authResult.user.displayName,
-               "id": useridfb.value,
+               "username" : useridfb.value,
+               "name": authResult.user.displayName,
+               "email" : useridfb.value,
+               "identity": useridfb.value,
                "imageurl": image.value,
+               "password": useridfb.value,
             })
             .then((response)=>{
                 console.log(response.status);
