@@ -2,16 +2,16 @@
   <div> 
  <!-- <v-app> -->
   <!-- <hotel-flight/> -->
-  <v-app-bar flat
-  style="padding: 0px 90px"
-    app color="white"
-    dark
+  <!-- style="padding: 0px 90px" app -->
+  <v-toolbar flat
+   color="white" 
     height="100px"
   >
+  <v-app-bar-nav-icon class="hidden-lg-and-up" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
     <v-img src="logo_black.jpg" max-width="200"></v-img> 
       <v-spacer/>
       <!-- <v-btn  @click="scroll('reachus')">about</v-btn> -->
-    <v-list class="d-flex align-center rounded" color="white" dark permanent>
+    <v-list class="d-none d-sm-flex align-center rounded" color="white" dark permanent>
       <v-list-item link v-for="(menu,i) in menus" :key="i" :to="menu.route">
         <v-list-item-title class="black--text">{{menu.title}}</v-list-item-title>
       </v-list-item>
@@ -30,7 +30,23 @@
         <input type="submit" value="login now" class="btn">
       </form>
     </div> -->
-  </v-app-bar>
+  </v-toolbar>
+  <v-navigation-drawer
+      v-model="drawer"
+      absolute 
+      height="300"
+      top 
+      temporary
+    >
+    <v-list class="align-center justify-center rounded">
+      <v-list-item link v-for="(menu,i) in menus" :key="i" :to="menu.route">
+        <v-list-item-title class="black--text">{{menu.title}}</v-list-item-title>
+      </v-list-item>
+      <v-btn color="black" style="textTransform: none" @click="scroll('reachus')" text>Reach Us</v-btn>
+      <v-btn dark color="#92278f">
+       <router-link to="/logincard" style="text-decoration :none" class="white--text"><v-icon>mdi-account</v-icon>Join our Club</router-link> </v-btn>
+      </v-list>
+    </v-navigation-drawer>
   </div>
 </template>
 
@@ -43,11 +59,12 @@ export default {
   
     data() {
         return {
+          drawer: false,
             menus: [
                 { title: "Welcome", /*route: "welcome" */},
                 { title: "Flights", /*route: "flights"*/ },
                 { title: "Hotels", /*route: "hotels"*/ },
-                { title: "About Us",route: "aboutus"},
+                { title: "About Us",route: "aboutus" , /*align: ' d-none d-lg-table-cell'*/},
                 // { title: "Reach Us", /*route: "reachus"*/ }
             ]
         };
