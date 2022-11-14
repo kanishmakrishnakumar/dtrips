@@ -7,18 +7,19 @@
         background-color="transparent"
         class="hidden-xs-only">
 
-        <v-tab  class="ml-1 purple--text"
+        <v-tab class="ml-1 purple--text"
         width="200px">
           Hotels
         </v-tab>
         </v-tabs>
+        <br>
     <v-form>
-    <v-container>
+    <!-- <v-container> -->
       <v-row>
             <v-col
           cols="12"
           sm="6"
-          md="3"
+          md="3" 
           dense
         >
           <v-text-field color="purple"
@@ -97,7 +98,7 @@
           <template v-slot:activator="{ on, attrs }">
             <v-text-field color="purple"
               placeholder="Travellers"
-              v-model="travellers"
+              v-model="doubleValue"
               outlined
               v-bind="attrs"
               v-on="on"
@@ -107,24 +108,39 @@
               <!-- <v-row> -->
                 <!-- <v-col> -->
               <v-card-title class="text-h5">
-                Adults &nbsp;<h6 class="text-center grey--text">(+12yrs)</h6> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp;<v-btn class="control-button" @click="decreaseAdult">-</v-btn>
+                Adults &nbsp;<h6 class="text-center grey--text">(+12yrs)</h6> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp;
+                <v-btn class="control-button" @click="decreaseAdult">-</v-btn>
                 &nbsp; {{ Adult }} &nbsp;
                 <v-btn class="control-button" @click="increaseAdult">+</v-btn>
               </v-card-title>
             <!-- </v-col>
             <v-col> -->
+
+              <!-- :disabled="!Child ? 'true': undefined" -->
               <v-card-title class="text-h5">
-                Childern &nbsp;<h6 class="text-center grey--text">(2-12yrs)</h6>  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <v-btn class="control-button" @click="decreaseChild">-</v-btn>
+                Childern &nbsp;<h6 class="text-center grey--text">(2-12yrs)</h6>  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <v-btn class="control-button" @click="decreaseChild">-</v-btn>
                 &nbsp; {{ Child }} &nbsp;
                 <v-btn class="control-button" @click="increaseChild">+</v-btn>
               </v-card-title>
             <!-- </v-col>
             <v-col> -->
-              <v-card-title class="text-h5">
-                Infants &nbsp;<h6 class="text-center grey--text">(0-2yrs)</h6> &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; <v-btn class="control-button" @click="decreaseInfant">-</v-btn>
+              <!-- <v-card-title class="text-h5">
+                Infants &nbsp;<h6 class="text-center grey--text">(0-2yrs)</h6> &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; 
+                <v-btn class="control-button" @click="decreaseInfant">-</v-btn>
                 &nbsp; {{ Infant }} &nbsp;
                 <v-btn class="control-button" @click="increaseInfant">+</v-btn>
-              </v-card-title>
+              </v-card-title> -->
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="purple"
+                  text
+                  @click="dialog = false"
+                >
+                  Apply
+                </v-btn>
+              </v-card-actions>
             <!-- </v-col> -->
             <!-- </v-row> -->
             </v-card>
@@ -140,7 +156,7 @@
           <v-btn height="55" color="#92278f" dark><v-icon>mdi-magnify</v-icon>Search</v-btn>
           </v-col>
     </v-row>
-    </v-container>
+    <!-- </v-container> -->
     </v-form>  
 </div>
 </template>
@@ -150,95 +166,64 @@ export default {
   data:()=>({
     tab: null,
     dialog: false,
-    travellers: '',
-    Adult: 1,
-    Child: 0,
-    Infant: 0,
-    adults:'',
     date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     // date2: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     date2: '',
     nowDate: new Date().toISOString().slice(0,10),
     checkin: false,
-    checkout: false
+    checkout: false,
+    travellers: '',
+    Adult: 1,
+    Child: 0,
+    Infant: 0,
   }),
 
-  mounted() {
-    this.travellers = this.Adult + '  ' + 'Adults' + '  ' + this.Child + '  ' + 'Childs' + '  ' +this.Infant + '  ' + 'Infants' ;
- },
+  computed: {
+      doubleValue: {
+          get(){
+              //this function will determine what is displayed in the input
+              return  this.travellers = this.Adult + '  ' + 'Adults'+ '  ' + this.Child + '  ' + 'Childs'+ '  ' +this.Infant + '  ' + 'Infants';
+          },
+      }
+    },
 
-  methods:{
-      decreaseAdult() {
-        console.log('decrease button clicked');
-        console.log(this.Adult--);
-        console.log(this.Adult)
-      },
-      increaseAdult() {
-          console.log('increase button clicked');
-          console.log(this.Adult++);
-      },
-      decreaseChild() {
-          console.log('decrease button clicked');
-          console.log(this.Child--);
-      },
-      increaseChild() {
-          console.log('increase button clicked');
-          console.log(this.Child++);
-      },
-      decreaseInfant() {
-          console.log('decrease button clicked');
-          console.log(this.Infant--);
-      },
-      increaseInfant() {
-          console.log('increase button clicked');
-          console.log(this.Infant++);
-      },
-  }
+    methods:{
+        decreaseAdult() {
+          if(this.Adult > 1) {
+              this.Adult -= 1
+            }
+            if(this.Adult < this.Infant){
+              this.Infant -= 1 ;
+              alert(`Infant can't travel more than Adult`)
+          }
+
+          // console.log('decrease button clicked');
+          // console.log(this.Adult--);
+        },
+        increaseAdult() {
+          this.Adult = this.Adult === 9 ? 9 : this.Adult + 1;
+            // console.log(this.Adult++);
+        },
+        decreaseChild() {
+          if(this.Child) {
+              this.Child -= 1
+            }
+        },
+        increaseChild() {
+          this.Child = this.Child === 6 ? 6 : this.Child + 1;
+        },
+        decreaseInfant() {
+          if(this.Infant) {
+              this.Infant -= 1
+            }
+        },
+        increaseInfant() {
+          if(this.Adult > this.Infant){
+            this.Infant = this.Infant === 6 ? 6 : this.Infant + 1;
+          }else{
+            alert(`Infant can't travel more than Adult`)
+          }
+        },
+    }
 }
 </script>
-
-<style>
-
-/* .box{
-  background: #fff;
-  width: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  margin: 20px 0;
-  border-radius: 5px;
-  border: 1px solid #c6c6c6;
-  box-shadow: 2px 2px 8px rgba(0,0,0,.5);
-}
-
-.box-label{
-  margin-right: 15px;
-}
-
-.box .button{
-  width: 37px;
-  height: 37px;
-  border: 1px solid #c6c6c6;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.box .button:active{
-  background: #ccc;
-
-}
-
-.box .v-text-field{
-  width: 60px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 22px;
-  margin: 0 10px;
-} */
-
-</style>
