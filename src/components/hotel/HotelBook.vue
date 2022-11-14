@@ -108,7 +108,7 @@
               <!-- <v-row> -->
                 <!-- <v-col> -->
               <v-card-title class="text-h5">
-                Adults &nbsp;<h6 class="text-center grey--text">(+12yrs)</h6> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp;
+                Adults<h6 class="text-center grey--text">(+12yrs)</h6> &nbsp;
                 <v-btn class="control-button" @click="decreaseAdult">-</v-btn>
                 &nbsp; {{ Adult }} &nbsp;
                 <v-btn class="control-button" @click="increaseAdult">+</v-btn>
@@ -118,7 +118,7 @@
 
               <!-- :disabled="!Child ? 'true': undefined" -->
               <v-card-title class="text-h5">
-                Childern &nbsp;<h6 class="text-center grey--text">(2-12yrs)</h6>  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                Child <h6 class="text-center grey--text">(2-12yrs)</h6> &nbsp; &nbsp;
                 <v-btn class="control-button" @click="decreaseChild">-</v-btn>
                 &nbsp; {{ Child }} &nbsp;
                 <v-btn class="control-button" @click="increaseChild">+</v-btn>
@@ -126,9 +126,9 @@
             <!-- </v-col>
             <v-col> -->
               <v-card-title class="text-h5">
-                Rooms &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                Rooms &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 <!-- <h6 class="text-center grey--text">(0-2yrs)</h6> -->
-                 &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; 
+              
                 <v-btn class="control-button" @click="decreaseInfant">-</v-btn>
                 &nbsp; {{ Room }} &nbsp;
                 <v-btn class="control-button" @click="increaseInfant">+</v-btn>
