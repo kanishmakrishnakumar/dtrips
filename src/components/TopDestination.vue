@@ -5,13 +5,13 @@
           <!-- </secction> -->
     <!-- <h1 class="text-center font-weight-medium text-decoration-underline">Top Destination</h1>
     <br> -->
-    <v-row>
+    <v-row align="center" justify="center">
         <v-col cols="4" >
           <v-hover>
            <template v-slot:default="{ hover }">
           <v-card
-            class="ml-14"
-            max-width="444"
+          class="mx-auto"
+            max-width="440"
           >
             <!-- <v-card-text > -->
             <v-img src="https://images.thrillophilia.com/image/upload/s--bejISfVD--/c_fill,g_auto,h_600,q_auto,w_975/f_auto,fl_strip_profile/v1/images/photos/000/126/889/original/1522671846_Munnar.jpg.jpg"
@@ -98,7 +98,7 @@
           <v-hover>
            <template v-slot:default="{ hover }">
           <v-card
-            class="ml-14"
+           class="mx-auto"
             max-width="444"
           >
             <!-- <v-card-text > -->
