@@ -1,9 +1,9 @@
 <template>
       <!-- <v-footer> -->
    <!-- <v-container class="grey lighten-5"> -->
-    <v-row class="ml-12">
+    <v-row class="ml-6">
       <v-col
-        cols="12"
+        cols="10"
         sm="3"
         class="ml-9"
       >
@@ -98,7 +98,7 @@
       </v-col>
       <br>
       <v-col
-        cols="12"
+        cols="10"
         sm="2" class="ml-9"
       >Company
       <br>
@@ -117,7 +117,7 @@
       </v-col>
        <br><br>
       <v-col
-        cols="12"
+        cols="10"
         sm="2" class="ml-9"
       >
       Support
@@ -159,7 +159,7 @@
       </v-col>
       <br><br>
       <v-col
-        cols="12"
+        cols="10"
         sm="2" class="ml-9"
       >Mailing List
       <br>
@@ -167,24 +167,24 @@
       <div class="grey--text">Sign up for our mailing list to get latest updates and offers.</div>
       <br>
       <template>
-  <v-form>
+  <!-- <v-form> -->
     <!-- <v-container> -->
       <!-- <v-row> -->
-        <!-- <v-col
-        cols="12"
-        sm="3" md="3"> -->
+        <v-col
+        cols="11"
+        >
           <v-text-field
             dense
             label="Your Email"
             name="email"
             outlined
-            class="mx-1"
+            class="mx-0"
           ></v-text-field>
           <v-btn color="#92278f" dark>Subscribes</v-btn>
-        <!-- </v-col> -->
+        </v-col>
       <!-- </v-row> -->
       <!-- </v-container> -->
-  </v-form>
+  <!-- </v-form> -->
   </template>
 
 
