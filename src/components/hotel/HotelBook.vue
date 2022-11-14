@@ -125,12 +125,14 @@
               </v-card-title>
             <!-- </v-col>
             <v-col> -->
-              <!-- <v-card-title class="text-h5">
-                Infants &nbsp;<h6 class="text-center grey--text">(0-2yrs)</h6> &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; 
+              <v-card-title class="text-h5">
+                Rooms &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                <!-- <h6 class="text-center grey--text">(0-2yrs)</h6> -->
+                 &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; 
                 <v-btn class="control-button" @click="decreaseInfant">-</v-btn>
-                &nbsp; {{ Infant }} &nbsp;
+                &nbsp; {{ Room }} &nbsp;
                 <v-btn class="control-button" @click="increaseInfant">+</v-btn>
-              </v-card-title> -->
+              </v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn
@@ -175,14 +177,14 @@ export default {
     travellers: '',
     Adult: 1,
     Child: 0,
-    Infant: 0,
+    Room: 0,
   }),
 
   computed: {
       doubleValue: {
           get(){
               //this function will determine what is displayed in the input
-              return  this.travellers = this.Adult + '  ' + 'Adults'+ '  ' + this.Child + '  ' + 'Childs'+ '  ' +this.Infant + '  ' + 'Infants';
+              return  this.travellers = this.Adult + '  ' + 'Adults'+ '  ' + this.Child + '  ' + 'Childs'+ '  ' +this.Room + '  ' + 'Rooms';
           },
       }
     },
@@ -193,8 +195,8 @@ export default {
               this.Adult -= 1
             }
             if(this.Adult < this.Infant){
-              this.Infant -= 1 ;
-              alert(`Infant can't travel more than Adult`)
+              this.Room -= 1 ;
+              alert(`Room can't travel more than Adult`)
           }
 
           // console.log('decrease button clicked');
@@ -213,15 +215,15 @@ export default {
           this.Child = this.Child === 6 ? 6 : this.Child + 1;
         },
         decreaseInfant() {
-          if(this.Infant) {
-              this.Infant -= 1
+          if(this.Room) {
+              this.Room -= 1
             }
         },
         increaseInfant() {
-          if(this.Adult > this.Infant){
-            this.Infant = this.Infant === 6 ? 6 : this.Infant + 1;
+          if(this.Adult > this.Room){
+            this.Room = this.Room === 6 ? 6 : this.Room + 1;
           }else{
-            alert(`Infant can't travel more than Adult`)
+            alert(`Room can't travel more than Adult`)
           }
         },
     }
