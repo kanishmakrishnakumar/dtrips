@@ -1,17 +1,19 @@
 <template>
   <!-- <v-app> -->
-    <v-container fluid>
-      <v-row>
+    <v-container align="center" justify="center" fluid>
+      <v-row align="center" justify="center">
         <v-col>
-          <v-card flat color="#3e154e" class="rounded-xl mtop mbottom mx-10 pa-4" height="350">
+          <v-card flat color="#3e154e" class="rounded-xl mtop mbottom mx-10 pa-4">
             <v-row>
-              <v-col cols="12" xs="12" sm="12" md="4" class="ml-12">
-                <v-card color="#E2F2E5" class="rounded-xl mt-n16 ml-16 mobile" outlined flat height="400" width="200">
+              <!-- <v-col cols="12" xs="12" sm="12" md="4" class="ml-12"> -->
+                <v-col class="d-none d-sm-flex align-center">
+                <v-card color="#E2F2E5" class="rounded-xl mt-n16 ml-10 mobile" outlined flat width="200">
                   <v-img src="mobile1.png"></v-img>
                 </v-card>
               </v-col>
-              <v-col class="mt-12">
-                <h1 class="intro-text white--text" >Download & Enjoy</h1><br>
+              <v-col class="mt-12 mr-14">
+                <h1 class="intro-text white--text" >Download & Enjoy</h1>
+                <br>
             <p class="description white--text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quia vitae omnis maxime, 
                 debitis sed iste, excepturi nam porro dolor minima beatae tenetur repellendus ipsum. Amet libero hic itaque! Odio.</p>
                 <br>
@@ -34,6 +36,13 @@
     </v-container>
   <!-- </v-app> -->
 </template>
+
+<style>
+.do{
+  font-size: 2vw;
+  color: white;
+}
+</style>
 
 <!-- <template>
    color="#E2F2E5"
