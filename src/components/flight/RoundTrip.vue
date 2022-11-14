@@ -4,7 +4,7 @@
     <!-- <v-container class="container"> -->
       <v-row>
         <v-col
-            cols="2"
+            cols="12"
             sm="6"
             md="2"
             >
@@ -98,10 +98,60 @@
             cols="12"
             sm="6" md="2"
           >
+          <v-dialog
+            v-model="dialog"
+            width="500"
+          >
+          <template v-slot:activator="{ on, attrs }">
             <v-text-field color="purple"
-              placeholder="Adults  Childs"
+              placeholder="Travellers"
+              v-model="RoundTrip"
               outlined
+              v-bind="attrs"
+              v-on="on"
             ></v-text-field>
+            </template>
+            <v-card>
+              <!-- <v-row> -->
+                <!-- <v-col> -->
+              <v-card-title class="text-h5">
+                Adults &nbsp;<h6 class="text-center grey--text">(+12yrs)</h6> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp; &nbsp; &nbsp;
+                <v-btn class="control-button" @click="decreaseAdult">-</v-btn>
+                &nbsp; {{ Adult }} &nbsp;
+                <v-btn class="control-button" @click="increaseAdult">+</v-btn>
+              </v-card-title>
+            <!-- </v-col>
+            <v-col> -->
+
+              <!-- :disabled="!Child ? 'true': undefined" -->
+              <v-card-title class="text-h5">
+                Childern &nbsp;<h6 class="text-center grey--text">(2-12yrs)</h6>  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <v-btn class="control-button" @click="decreaseChild">-</v-btn>
+                &nbsp; {{ Child }} &nbsp;
+                <v-btn class="control-button" @click="increaseChild">+</v-btn>
+              </v-card-title>
+            <!-- </v-col>
+            <v-col> -->
+              <v-card-title class="text-h5">
+                Infants &nbsp;<h6 class="text-center grey--text">(0-2yrs)</h6> &nbsp;&nbsp;&nbsp; :&nbsp; &nbsp; &nbsp;&nbsp; 
+                <v-btn class="control-button" @click="decreaseInfant">-</v-btn>
+                &nbsp; {{ Infant }} &nbsp;
+                <v-btn class="control-button" @click="increaseInfant">+</v-btn>
+              </v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="purple"
+                  text
+                  @click="dialog = false"
+                >
+                  Apply
+                </v-btn>
+              </v-card-actions>
+            <!-- </v-col> -->
+            <!-- </v-row> -->
+            </v-card>
+          </v-dialog>
         </v-col>
         <v-col
           cols="12"
@@ -119,14 +169,66 @@
 <script>
 export default {
   data:()=>({
+    dialog: false,
     date1: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     date2: (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10),
     nowDate: new Date().toISOString().slice(0,10),
     departure: false,
     Return: false,
     items: ['Economy','Premium Economy','Business','First'],
+    travellers: '',
+    Adult: 1,
+    Child: 0,
+    Infant: 0,
 
-  })
+  }),
+  computed: {
+    RoundTrip: {
+          get(){
+              //this function will determine what is displayed in the input
+              return  this.travellers = this.Adult + '  ' + 'Adults'+ '  ' + this.Child + '  ' + 'Childs'+ '  ' +this.Infant + '  ' + 'Infants';
+          },
+      }
+    },
+
+    methods:{
+        decreaseAdult() {
+          if(this.Adult > 1) {
+              this.Adult -= 1
+            }
+            if(this.Adult < this.Infant){
+              this.Infant -= 1 ;
+              alert(`Infant can't travel more than Adult`)
+          }
+
+          // console.log('decrease button clicked');
+          // console.log(this.Adult--);
+        },
+        increaseAdult() {
+          this.Adult = this.Adult === 9 ? 9 : this.Adult + 1;
+            // console.log(this.Adult++);
+        },
+        decreaseChild() {
+          if(this.Child) {
+              this.Child -= 1
+            }
+        },
+        increaseChild() {
+          this.Child = this.Child === 6 ? 6 : this.Child + 1;
+        },
+        decreaseInfant() {
+          if(this.Infant) {
+              this.Infant -= 1
+            }
+        },
+        increaseInfant() {
+          if(this.Adult > this.Infant){
+            this.Infant = this.Infant === 6 ? 6 : this.Infant + 1;
+          }else{
+            alert(`Infant can't travel more than Adult`)
+          }
+        },
+    }
 }
 </script>
 
