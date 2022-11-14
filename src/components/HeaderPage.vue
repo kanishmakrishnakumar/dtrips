@@ -34,11 +34,18 @@
   <v-navigation-drawer
       v-model="drawer"
       absolute 
-      height="300"
+      height="350"
       top 
       temporary
     >
     <v-list class="align-center justify-center rounded">
+      <v-list-item>
+        <!-- <v-list-item-avatar> -->
+          <v-img src="logo_black.jpg" max-width="120"></v-img>
+        <!-- </v-list-item-avatar> -->
+      </v-list-item>
+
+      <v-divider></v-divider>
       <v-list-item link v-for="(menu,i) in menus" :key="i" :to="menu.route">
         <v-list-item-title class="black--text">{{menu.title}}</v-list-item-title>
       </v-list-item>
