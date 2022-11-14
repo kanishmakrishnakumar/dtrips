@@ -5,7 +5,7 @@
       <v-col
         cols="12"
         sm="3"
-        class="ml-12"
+        class="ml-9"
       >
       Need Dtrips Help?<br>
       <br>
@@ -26,7 +26,8 @@
       <br>
       <br>
       <div id="reachus">
-      Contact Info</div> <br>
+      Contact Info</div> 
+      <!-- <br> -->
      <div class="grey--text">Panampally Nagar,Cochin - 682 024</div> <br>
      <br>
      <v-hover v-slot="{ hover }">
@@ -95,13 +96,14 @@
           </v-btn></v-hover>
       
       </v-col>
+      <br>
       <v-col
         cols="12"
         sm="2" class="ml-9"
       >Company
       <br>
       <br>
-      <br>
+      <!-- <br> -->
       <v-row>
         <v-hover v-slot="{ hover }">
           <div
@@ -113,14 +115,15 @@
         </v-hover>
       </v-row>
       </v-col>
+       <br><br>
       <v-col
         cols="12"
-        sm="2"
+        sm="2" class="ml-9"
       >
       Support
       <br>
       <br>
-      <br>
+      <!-- <br> -->
       <v-row>
       <p>
         <v-hover v-slot="{ hover }">
@@ -154,12 +157,13 @@
         </v-hover>
       </v-row>
       </v-col>
+      <br><br>
       <v-col
         cols="12"
-        sm="3" md="3"
+        sm="2" class="ml-9"
       >Mailing List
       <br>
-      <br>
+      <!-- <br> -->
       <div class="grey--text">Sign up for our mailing list to get latest updates and offers.</div>
       <br>
       <template>
