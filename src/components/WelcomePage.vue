@@ -1,7 +1,7 @@
 <template>
   <div>
-  <!-- <v-container fluid> -->
-    <!-- <v-row> -->
+  <v-container fluid>
+    <!-- <v-row align="center" justify="center"> -->
      
     <!-- <br>https://i.pinimg.com/originals/95/c4/32/95c432ec12a48c48e6ba23ba8fd26311.gif
     https://cdn.dribbble.com/users/1492844/screenshots/3307274/travel.gif-->
@@ -90,7 +90,7 @@
         
         
 
-    <!-- </v-container> -->
+    </v-container>
 
     <!-- https://www.kindpng.com/picc/m/26-266037_travel-png-free-download-8-de-maio-dia.png -->
     <!-- https://www.transparentpng.com/thumb/travel/Yz4LYk-travel-symbol-transparent-image.png -->
@@ -133,7 +133,7 @@ import TrainBook from './train/TrainBook.vue';
 
 <style>
 .tabs{
-  width: 1200px;
+  /* width: 1200px; */
   margin: 0 auto;
   color:"#3e154e";
   justify-content: center;
@@ -142,9 +142,10 @@ import TrainBook from './train/TrainBook.vue';
 .nav-tabs{
   display: flex;
   /* background-color: #3e154e; */
-  width: 800px;
+  /* width: 950px; */
+  margin: 0 auto;
   position:100 ;
-  /* justify-content: center; */
+  justify-content: left;
 }
 
 .nav-item{
@@ -166,6 +167,7 @@ import TrainBook from './train/TrainBook.vue';
 .tab-content{
   background-color:#92278f;
   padding: 5px;
+  justify-content: center;
   /* width: 100%; */
   /* box-shadow: rgba(225,225,225,0.1); */
 }
@@ -173,26 +175,30 @@ import TrainBook from './train/TrainBook.vue';
 .for-example h2{
   margin-top: 0;
   color: purple;
+  justify-content: center;
 }
 
 .active{
   color: rgb(0, 0, 0);
   background-color:#ece8ed;
+  justify-content: center;
   /* background-color: rgba(225,225,225,0.1); */
 }
 
 .tab-pane{
   background-color: white;
   padding: 12px;
-  height: 200px;
+  /* height: 200px; */
   border-top-left-radius: 6px ;
   border-top-right-radius: 6px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  justify-content: center;
 }
 
 #no-background-hover::before {
    background-color: transparent !important; 
+   justify-content: center;
 }
 
 /* .search span{
